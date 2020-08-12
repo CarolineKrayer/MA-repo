@@ -8,10 +8,10 @@ library(classo)
 library(stats)
 
 source("./Functions/demean_data.R")
-source("./Functions/calculate_uhat.R")
+source("./Functions/calculate_residuals.R")
 
 ###############################################################################
-# Within group estimator.
+# Fixed-effects estimator.
 # Input:
 #       X_demean_vector: demeaned regressor matrix in vector format (NT x p)
 #       Y_demean_vector: demeaned dependent variable in vector format (NT x 1)

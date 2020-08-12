@@ -12,7 +12,7 @@ library(Matrix)
 
 rm(list=ls())
 out_path = "./Simstudy/Results/"
-source("./Functions/calculate_uhat.R")
+source("./Functions/calculate_residuals.R")
 source("./Functions/test_stat.R")
 source("./Functions/DGP.R")
 source("./Functions/demean_data.R")

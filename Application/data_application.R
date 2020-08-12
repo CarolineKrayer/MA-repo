@@ -14,12 +14,13 @@ library(tidyverse)
 library(rlist)
 library(tis)
 
-source("./Functions/calculate_uhat.R")
+source("./Functions/calculate_residuals.R")
 source("./Functions/test_stat.R")
 source("./Functions/demean_data.R")
 source("./Functions/estimators.R")
 source("./Functions/lasso_est_time.R")
-source("./Functions/bias_variance.R")
+source("./Functions/bias_correction.R")
+source("./Functions/se_classo.R")
 
 ################################################################################
 # Input:

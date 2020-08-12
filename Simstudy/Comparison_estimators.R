@@ -10,7 +10,6 @@ library(pracma)
 library(xtable)
 
 rm(list=ls())
-source("./Functions/DGP.R")
 out_path = "./Simstudy/Results/"
 
 #################################################################
