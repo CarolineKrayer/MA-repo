@@ -11,7 +11,7 @@ library(xtable)
 
 rm(list=ls())
 source("./Functions/DGP.R")
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 
 #################################################################
 # Compute MSE of estimator.
@@ -191,9 +191,9 @@ p = 2
 ccons = c(0.25, 0.5, 0.75)
 lambda_pos = 2
 
-M = 3
+M = 1000
 Kmax = 5
-DGP = 5
+DGP = 6
 time_effect = TRUE
 bias_corr = TRUE
 alpha = 0.05/Kmax
@@ -225,11 +225,11 @@ for( i in 1:4){
 
 
 table_tex = xtable(table, digits=3)
-caption(table_tex) = paste0("Estimator comparison DGP", DGP, "biascorr", bias_corr, "\n")
+caption(table_tex) = paste0("Estimator Performance DGP", DGP, "time effect", time_effect, "biascorr", bias_corr, "\n")
 
 print.xtable(x=table_tex,
              type="latex",
-             file=paste0(out_path, "mse_comparison_DGP", DGP, "_biascorr", bias_corr,".tex"),
+             file=paste0(out_path, "comparison_est_DGP", DGP, "_time_effect", time_effect, "_biascorr", bias_corr, "_Mrep", M, "_lambda_pos", lambda_pos,".tex"),
              caption.placement = "bottom",
              booktabs=TRUE
 ) 

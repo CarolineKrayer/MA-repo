@@ -23,7 +23,7 @@ table1[ , c(1, 3, 5)] = results$test_stat
 table1[ , c(2, 4, 6)] = results$p_test_stat
 
 table1_tex = xtable(table1, digits=4)
-caption(table1_tex) = paste0("Test statistics and p-values democracy application all countries ", all_countries, ". \n")
+caption(table1_tex) = "Test Statistics with p-Values \n"
 
 print.xtable(x=table1_tex,
              type="latex",
@@ -39,8 +39,8 @@ table2[ , 2] = results$IC[ , 2]
 table2[ , 3] = results$IC[ , 3]
 
 table2_tex = xtable(table2, digits=3)
-caption(table2_tex) = paste0("Information criterion democracy application all countries ", all_countries, ". \n")
-
+caption(table2_tex) = "Values of the Information Criterion \n"
+                             
 print.xtable(x=table2_tex,
              type="latex",
              file=paste0(out_path, "IC_table_application_", application, "_all_countries", all_countries, ".tex"),
@@ -60,7 +60,7 @@ table3[1:5, c(5, 8)] = t(results$se[1:n_groups, , n_groups, lambda_pos])
 table3[1:5, c(6, 9)] = t(results$p_estim[1:n_groups, , n_groups, lambda_pos])
 
 table3_tex = xtable(table3, digits=3)
-caption(table3_tex) = paste0("Estimation results democracy application all countries ", all_countries, ". \n")
+caption(table3_tex) = "Estimation Results \n"
 
 print.xtable(x=table3_tex,
              type="latex",

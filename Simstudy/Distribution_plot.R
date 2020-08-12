@@ -7,7 +7,7 @@ library(reshape2)
 library(rlist)
 
 rm(list=ls())
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 
 # Plot density.
 # Input:
@@ -70,7 +70,7 @@ dist_plot = function(N, T, M, DGP, Kmax, K_true, time_effect, lambda_pos, ccons=
 # Simulation parameters.
 N_vec = c(rep(40, 4))
 T_vec = rep(c(10, 40), times=2)
-DGP_vec = rep(c(5, 42), each=2)
+DGP_vec = rep(c(3, 6), each=2)
 time_effect = TRUE
 M = 1000
 Kmax = 5

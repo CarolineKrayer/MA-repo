@@ -10,7 +10,7 @@ library(rlist)
 library(xtable)
 
 rm(list=ls())
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 
 # Compute frequencies.
 # Input:
@@ -58,9 +58,9 @@ frequencies = function(DGP, N, T, Kmax, M, alpha, time_effect, bias_corr, ccons=
 # Simulation parameters.
 N_vec = c(40, 80, 40, 20)
 T_vec = c(10, 10, 40, 40)
-M = 3
+M = 1000
 Kmax = 5
-DGP = 5
+DGP = 6
 bias_corr = TRUE
 time_effect = TRUE
 alpha1 = 0.05
@@ -92,33 +92,33 @@ for (i in 1:4) {
 
 # Table1: Empirical rejection frequencies.
 table1_tex = xtable(table1, digits=3)
-caption(table1_tex) = paste0("Rejection frequencies DGP", DGP, "biascorr", bias_corr, "\n")
+caption(table1_tex) = paste0("Rejection frequencies DGP", DGP,"time effect", time_effect, "biascorr", bias_corr, "\n")
 
 print.xtable(x=table1_tex,
              type="latex",
-             file=paste0(out_path, "rejection_frequencies_DGP", DGP, "_biascorr", bias_corr,".tex"),
+             file=paste0(out_path, "rejection_frequencies_DGP", DGP, "_time_effect", time_effect, "_biascorr", bias_corr, "_Mrep", M, "_lambda_pos", lambda_pos,".tex"),
              caption.placement = "bottom",
              booktabs=TRUE
 )
 
-# Table 2: Estimated number of groups with hypothesis test.
+# Table 2: Estimated number of groups with testing procedure.
 table2_tex = xtable(table2, digits=3)
-caption(table2_tex) = paste0("Estimated group numbers by test DGP", DGP, "biascorr", bias_corr, "\n")
+caption(table2_tex) = paste0("Estimated number of groups with testing procedure DGP", DGP, "time effect", time_effect,  "biascorr", bias_corr, "\n")
 
 print.xtable(x=table2_tex,
              type="latex",
-             file=paste0(out_path, "est_group_number_test_DGP", DGP, "_biascorr", bias_corr,".tex"),
+             file=paste0(out_path, "est_group_number_test_DGP", DGP, "_time_effect", time_effect, "_biascorr", bias_corr, "_Mrep", M, "_lambda_pos", lambda_pos,".tex"),
              caption.placement = "bottom",
              booktabs=TRUE
 )
 
 # Table 3: Estimated number of groups with information criterion.
 table3_tex = xtable(table3, digits=3)
-caption(table3_tex) = paste0("Estimated group numbers by IC DGP", DGP, "biascorr", bias_corr, "\n")
+caption(table3_tex) = paste0("Estimated number of groups with information criterion DGP", DGP, "time effect", time_effect, "biascorr", bias_corr, "\n")
 
 print.xtable(x=table3_tex,
              type="latex",
-             file=paste0(out_path, "est_group_number_IC_DGP", DGP, "_biascorr", bias_corr,".tex"),
+             file=paste0(out_path, "est_group_number_IC_DGP", DGP, "_time_effect", time_effect, "_biascorr", bias_corr, "_Mrep", M, "_lambda_pos", lambda_pos,".tex"),
              caption.placement = "bottom",
              booktabs=TRUE
 )

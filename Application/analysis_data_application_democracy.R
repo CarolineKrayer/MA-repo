@@ -31,10 +31,10 @@ lambda_pos = 1     # Tuning parameter selected.
 
 # Merge data as before.
 application = "democracy"
-data_orig = read.dta13("./Application/DDCGdata_final.dta")
+data_orig = read.dta13("./Application/Data/DDCGdata_final.dta")
 df_orig = data.frame(data_orig)
 
-data = read.dta13("./Application/democracy-balanced-l4.dta")
+data = read.dta13("./Application/Data/democracy-balanced-l4.dta")
 df = data.frame(data)
 
 df_merge = merge(df, df_orig, by.x=c("id", "year"), by.y=c("wbcode2", "year"), all.x=TRUE)
@@ -103,7 +103,7 @@ final_group1 = final[final$id %in% group1_orig, ]
 final_group2 = final[final$id %in% group2_orig, ]
 
 # Store group membership in a list.
-list.save(group_memb, file=paste0(out_path, "Group_membership_countries.rdata"))
+list.save(group_memb, file=paste0(out_path, "Group_membership_all_countries", all_countries, ".rdata"))
 
 # Gather information of countries in the groups.
 gdp_group1 = gdp[group1, ]
@@ -148,7 +148,7 @@ table[, 3] = sapply(covars_group2, function(x) mean(matrixcalc::vec(x), na.rm=TR
 table[, 4] = sapply(covars_group2, function(x) sd(matrixcalc::vec(x), na.rm=TRUE))
 
 table_tex = xtable(table, digits=2)
-caption(table_tex) = "Descriptive statistics within groups. \n"
+caption(table_tex) = "Descriptive Statistics Within the Estimated Groups. \n"
 label(table_tex) = "tab: descriptive_stats"
 
 print.xtable(x=table_tex,

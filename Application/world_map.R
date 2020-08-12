@@ -9,7 +9,7 @@ rm(list=ls())
 out_path = "./Application/Results/"
 
 # Load list with group membership.
-groups = list.load(file=paste0(out_path, "Group_membership_countries.rdata"))
+groups = list.load(file=paste0(out_path, "Group_membership_all_countries", all_countries, ".rdata"))
 group_1 = groups[[1]]
 group_2 = groups[[2]]
 

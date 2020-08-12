@@ -9,10 +9,10 @@ out_path = "./Application/Results/"
 
 # Merge original data of Acemoglu et al (2019) with balanced subpanel.
 application = "democracy"
-data_orig = read.dta13("./Application/DDCGdata_final.dta")
+data_orig = read.dta13("./Application/Data/DDCGdata_final.dta")
 df_orig = data.frame(data_orig)
 
-data = read.dta13("./Application/democracy-balanced-l4.dta")
+data = read.dta13("./Application/Data/democracy-balanced-l4.dta")
 df = data.frame(data)
 
 df_merge = merge(df, df_orig, by.x=c("id", "year"), by.y=c("wbcode2", "year"), all.x=TRUE)

@@ -6,19 +6,20 @@ library(plyr)
 library(reshape2)
 
 rm(list=ls())
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 
 # Set parameters.
 N_vec = c(40, 80, 40, 20)
 T_vec = c(10, 10, 40, 40)
-M = 2
+M = 1000
 Kmax = 5
 alpha = 0.05/Kmax
 time_effect = TRUE
+bias_corr = TRUE
 
 # Load data.
 data = mapply(function(N, T) readRDS(df, 
-                              file=paste0(out_path, "Powerfct_homo_dist_N", N, "_T", T, "_Mrep", M, "_alpha", alpha, "_time_effect", time_effect, ".rds")),
+                              file=paste0(out_path, "Powerfct_homo_dist_N", N, "_T", T, "_Mrep", M, "_alpha", alpha, "_time_effect", time_effect, "_bias_corr", bias_corr, ".rds")),
               N_vec,
               T_vec,
               SIMPLIFY=FALSE)

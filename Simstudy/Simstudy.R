@@ -13,8 +13,7 @@ library(Matrix)
 library(tidyverse)
 
 rm(list=ls())
-setwd("C:/Users/carol/Documents/Studium/Master/4_Semester/Masterarbeit/MA-repo")
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 source("./Functions/calculate_uhat.R")
 source("./Functions/test_stat.R")
 source("./Functions/DGP.R")
@@ -210,12 +209,12 @@ simul_test = function(data, DGP, N, T, Kmax, time_effect, bias_corr=FALSE, ccons
 ################################################################################
 # Run the simulation study.
 N = 40
-T = 40
+T = 10
 M = 1000
 Kmax = 5
 DGP = 6
 ccons=c(0.25, 0.5, 0.75)
-bias_corr = FALSE
+bias_corr = TRUE
 time_effect = TRUE
 
 start = Sys.time()
@@ -282,5 +281,4 @@ end = Sys.time()
 runtime = end - start
 
 # Save results in a list.
-setwd("C:/Users/carol/Documents/Studium/Master/4_Semester/Masterarbeit/MA-repo")
 list.save(output, file=paste0(out_path, "Test_IC_results_DGP", DGP, "_time_effect", time_effect, "_N", N, "_T", T, "_Kmax", Kmax, "_Mrep", M, "_bias_corr", bias_corr,".rdata"))

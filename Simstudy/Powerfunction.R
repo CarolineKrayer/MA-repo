@@ -11,7 +11,7 @@ library(matrixStats)
 library(Matrix)
 
 rm(list=ls())
-out_path = "./Results/"
+out_path = "./Simstudy/Results/"
 source("./Functions/calculate_uhat.R")
 source("./Functions/test_stat.R")
 source("./Functions/DGP.R")
@@ -132,9 +132,9 @@ power_test = function(N, T, M, alpha, time_effect, bias_corr, disturbance) {
 
 ##################################################
 # Simulation parameters.
-N = 20
-T = 40
-M = 2
+N = 40
+T = 10
+M = 1000
 
 time_effect = TRUE
 bias_corr = TRUE
@@ -155,5 +155,5 @@ power_results_dist = pbsapply(disturbances,
 # Save results in a dataframe for later use. 
 df_disturbances = data.frame(disturbances, power_results_dist)
 names(df_disturbances) = c("disturbances", paste0("power_N", N, "_T", T))
-saveRDS(df_disturbances, file=paste0(out_path, "Powerfct_homo_dist_N", N, "_T", T, "_Mrep", M, "_alpha", alpha, "_time_effect", time_effect, ".rds"))
+saveRDS(df_disturbances, file=paste0(out_path, "Powerfct_homo_dist_N", N, "_T", T, "_Mrep", M, "_alpha", alpha, "_time_effect", time_effect, "_bias_corr", bias_corr, ".rds"))
 
