@@ -50,12 +50,12 @@ dist_plot = function(N, T, M, DGP, Kmax, K_true, time_effect, lambda_pos, ccons=
   
   # Plot densities.
   final_plot = ggplot(df_plot, aes(x=value, group=variable)) +
-                geom_density(aes(fill=variable, color=variable), alpha=.7, size=1.05) +
+                geom_density(aes(fill=variable, color=variable), alpha=.35, size=1.05) +
                 geom_hline(yintercept=0, color="#ebebeb", size=1.05) +
-                scale_fill_manual(values=c("#f8766c", "#54f75f", "#00bec4"),
+                scale_fill_manual(values=c("#97b724", "#e02926", "#00bec4"),
                                   name="",
                                   labels=c("Without bias correction", "With bias correction", "Limiting distribution")) +
-                scale_color_manual(values=c("#f8766c", "#54f75f", "#00bec4")) +
+                scale_color_manual(values=c("#97b724", "#e02926", "#00bec4")) +                
                 labs(
                   x = "Test statistic",
                   y = ("Density")) + 
@@ -104,8 +104,9 @@ final_plot = plot_grid(plots[[1]] + theme(legend.position="none"),
 # Add common legend to the plot. 
 legend_b = get_legend(
     plots[[1]] + 
-    guides(color = guide_legend(nrow = 1)) +
-    theme(legend.position = "bottom", panel.spacing = unit(1, "cm")) + 
+    theme(legend.position = "bottom", 
+          legend.text = element_text(margin = margin(r = 1, unit = 'cm')),
+          legend.key.size=unit(1.2, "cm")) + 
     guides(color=FALSE)
     )
 
@@ -113,4 +114,4 @@ final = plot_grid(final_plot, legend_b, ncol = 1, rel_heights = c(1, .1))
 
 # Save plot.
 ggsave(final, file=paste0(out_path, "Density_plots.png"),
-       height=10, width=15)
+       height=8, width=15)

@@ -97,7 +97,7 @@ oracle_est = function(X, Y, DGP, time_effect, bias_corr=FALSE){
       N2 = floor(N*0.3)
     }
 
-    # Minimal number of groups needed for bias correction.
+    # Ensure that bias correction is performed in every group.
     group_size_criterion = 0
     
     # Estimate coefficients within the true groups separately. 
@@ -154,6 +154,7 @@ oracle_est = function(X, Y, DGP, time_effect, bias_corr=FALSE){
   
   
   if (bias_corr==TRUE && group_size_criterion==3) {
+    # Return bias corrected estimates only if it is performed in each group.
     infeasible_beta_corr = infeasible_beta_corr[2:(N+1), ]
     return(infeasible_beta_corr)
   } else {

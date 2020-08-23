@@ -24,7 +24,7 @@ Jhat = function(uhat, X0){
 
   M0 = diag(T) - 1/T * array(1, c(T,T))    # T x T
 
-  # Check whether any Xj is singular and (if yes) delete individual j.
+  # Check whether any Omegaj_hat is singular and (if yes) delete individual j.
   checkproblems = array(0, c(N,1))
   for (j in 1:N) {
     Xj = t(X[ , ,j])

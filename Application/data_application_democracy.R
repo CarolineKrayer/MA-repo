@@ -22,7 +22,7 @@ T = length(unique(df_merge$year))
 pdf_merge = pdata.frame(df_merge, index = c("id", "year"), drop.index = FALSE, row.names = TRUE)
 
 # Select countries.
-all_countries = TRUE
+all_countries = FALSE
 
 if (all_countries==TRUE) {
   final = pdf_merge

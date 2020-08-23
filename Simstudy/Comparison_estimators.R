@@ -192,7 +192,7 @@ lambda_pos = 2
 
 M = 1000
 Kmax = 5
-DGP = 6
+DGP = 3
 time_effect = TRUE
 bias_corr = TRUE
 alpha = 0.05/Kmax

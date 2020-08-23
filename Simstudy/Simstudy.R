@@ -50,7 +50,6 @@ simul_test = function(data, DGP, N, T, Kmax, time_effect, bias_corr=FALSE, ccons
   info_criterion = array(0, c(Kmax+1, length(ccons)))
   min_info_criterion = array(0, c(length(ccons), 1))
   common_coef_est = array(0, c(N, p))
-  hetero_coef_est = array(0, c(N, p))
   post_lasso_est = array(0, c(N, p, Kmax, length(ccons)))
   infeasible_est = array(0, c(N, p))
 
@@ -115,7 +114,12 @@ simul_test = function(data, DGP, N, T, Kmax, time_effect, bias_corr=FALSE, ccons
   
   lambda_vec = ccons*c(var(Y_demean_vector))*T**(-1/3)
   for (lambda_pos in 1:length(lambda_vec)) {
-    for (k in 2:Kmax) {
+    if(lambda_pos==2) {
+      K_stop = Kmax
+    } else {
+      K_stop = 3
+    }
+    for (k in 2:K_stop) {
       if (time_effect == FALSE) {
       # C-Lasso estimation for models without time fixed effects.
         beta_hat = PLS.mosek(N=N,
@@ -209,7 +213,7 @@ simul_test = function(data, DGP, N, T, Kmax, time_effect, bias_corr=FALSE, ccons
 ################################################################################
 # Run the simulation study.
 N = 40
-T = 10
+T = 40
 M = 1000
 Kmax = 5
 DGP = 6

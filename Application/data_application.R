@@ -80,6 +80,7 @@ data_application = function(X, Y, N, T, p, Kmax, time_effect, bias_corr, ccons=c
   
   # Fix parameters needed for C-Lasso.
   rho = 2/3*(N*T)**(-1/2)
+  set.seed(92642)
   beta0 = matrix(rnorm(N*p), N, p)
   
   ####################

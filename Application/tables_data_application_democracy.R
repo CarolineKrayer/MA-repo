@@ -10,7 +10,7 @@ out_path = "./Application/Results/"
 application = "democracy"
 Kmax = 5
 ccons = c(0.25, 0.5, 0.75)
-all_countries = TRUE
+all_countries = FALSE
 n_groups = 2  # Number of groups determined by test.
 lambda_pos = 1  # Tuning parameter selected.
 
